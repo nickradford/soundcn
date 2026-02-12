@@ -14,241 +14,354 @@
           "type": "registry:lib"
         }
       ],
-      "categories": ["lib"]
+      "categories": [
+        "lib"
+      ]
     },
     {
       "name": "use-sound",
       "type": "registry:hook",
       "title": "useSound",
       "description": "A lightweight React hook for playing sound effects using the Web Audio API. Zero dependencies.",
-      
       "files": [
         {
           "path": "registry/new-york/hooks/use-sound.ts",
           "type": "registry:hook"
         }
       ],
-      "categories": ["hooks"]
+      "categories": [
+        "hooks"
+      ]
     },
     {
       "name": "click-8bit",
       "type": "registry:block",
       "title": "Click 8-Bit",
       "description": "A retro 8-bit click sound. Perfect for buttons and toggles in pixel-art or retro-themed interfaces.",
-      
       "files": [
         {
           "path": "registry/new-york/sounds/click-8bit/click-8bit.ts",
           "type": "registry:lib"
         }
       ],
-      "categories": ["click", "8-bit", "ui"],
+      "categories": [
+        "click",
+        "8-bit",
+        "ui"
+      ],
       "author": "Kenney <https://kenney.nl>",
       "meta": {
         "duration": 0.091,
         "format": "mp3",
         "sizeKb": 1,
         "license": "CC0",
-        "tags": ["click", "button", "8-bit", "retro", "ui"]
-      }
+        "tags": [
+          "click",
+          "button",
+          "8-bit",
+          "retro",
+          "ui"
+        ]
+      },
+      "registryDependencies": [
+        "use-sound"
+      ]
     },
     {
       "name": "click-soft",
       "type": "registry:block",
       "title": "Click Soft",
       "description": "A soft, subtle click. Ideal for minimal and clean UI interactions.",
-      
       "files": [
         {
           "path": "registry/new-york/sounds/click-soft/click-soft.ts",
           "type": "registry:lib"
         }
       ],
-      "categories": ["click", "ui"],
+      "categories": [
+        "click",
+        "ui"
+      ],
       "author": "Kenney <https://kenney.nl>",
       "meta": {
         "duration": 0.007,
         "format": "mp3",
         "sizeKb": 1,
         "license": "CC0",
-        "tags": ["click", "button", "soft", "minimal", "ui"]
-      }
+        "tags": [
+          "click",
+          "button",
+          "soft",
+          "minimal",
+          "ui"
+        ]
+      },
+      "registryDependencies": [
+        "use-sound"
+      ]
     },
     {
       "name": "switch-on",
       "type": "registry:block",
       "title": "Switch On",
       "description": "A satisfying switch-on toggle sound for checkboxes, toggles, and state changes.",
-      
       "files": [
         {
           "path": "registry/new-york/sounds/switch-on/switch-on.ts",
           "type": "registry:lib"
         }
       ],
-      "categories": ["switch", "ui"],
+      "categories": [
+        "switch",
+        "ui"
+      ],
       "author": "Kenney <https://kenney.nl>",
       "meta": {
         "duration": 0.364,
         "format": "mp3",
         "sizeKb": 3,
         "license": "CC0",
-        "tags": ["switch", "toggle", "on", "enable", "ui"]
-      }
+        "tags": [
+          "switch",
+          "toggle",
+          "on",
+          "enable",
+          "ui"
+        ]
+      },
+      "registryDependencies": [
+        "use-sound"
+      ]
     },
     {
       "name": "switch-off",
       "type": "registry:block",
       "title": "Switch Off",
       "description": "A toggle switch-off sound. Pair with switch-on for complete toggle feedback.",
-      
       "files": [
         {
           "path": "registry/new-york/sounds/switch-off/switch-off.ts",
           "type": "registry:lib"
         }
       ],
-      "categories": ["switch", "ui"],
+      "categories": [
+        "switch",
+        "ui"
+      ],
       "author": "Kenney <https://kenney.nl>",
       "meta": {
         "duration": 0.213,
         "format": "mp3",
         "sizeKb": 2,
         "license": "CC0",
-        "tags": ["switch", "toggle", "off", "disable", "ui"]
-      }
+        "tags": [
+          "switch",
+          "toggle",
+          "off",
+          "disable",
+          "ui"
+        ]
+      },
+      "registryDependencies": [
+        "use-sound"
+      ]
     },
     {
       "name": "notification-pop",
       "type": "registry:block",
       "title": "Notification Pop",
       "description": "A friendly pop sound for notifications, toasts, and alerts.",
-      
       "files": [
         {
           "path": "registry/new-york/sounds/notification-pop/notification-pop.ts",
           "type": "registry:lib"
         }
       ],
-      "categories": ["notification", "ui"],
+      "categories": [
+        "notification",
+        "ui"
+      ],
       "author": "Kenney <https://kenney.nl>",
       "meta": {
         "duration": 0.539,
         "format": "mp3",
         "sizeKb": 5,
         "license": "CC0",
-        "tags": ["notification", "pop", "alert", "toast", "ui"]
-      }
+        "tags": [
+          "notification",
+          "pop",
+          "alert",
+          "toast",
+          "ui"
+        ]
+      },
+      "registryDependencies": [
+        "use-sound"
+      ]
     },
     {
       "name": "success-chime",
       "type": "registry:block",
       "title": "Success Chime",
       "description": "A positive confirmation chime for success states, form submissions, and completed actions.",
-      
       "files": [
         {
           "path": "registry/new-york/sounds/success-chime/success-chime.ts",
           "type": "registry:lib"
         }
       ],
-      "categories": ["feedback", "ui"],
+      "categories": [
+        "feedback",
+        "ui"
+      ],
       "author": "Kenney <https://kenney.nl>",
       "meta": {
-        "duration": 0.490,
+        "duration": 0.49,
         "format": "mp3",
         "sizeKb": 4,
         "license": "CC0",
-        "tags": ["success", "confirmation", "chime", "positive", "ui"]
-      }
+        "tags": [
+          "success",
+          "confirmation",
+          "chime",
+          "positive",
+          "ui"
+        ]
+      },
+      "registryDependencies": [
+        "use-sound"
+      ]
     },
     {
       "name": "error-buzz",
       "type": "registry:block",
       "title": "Error Buzz",
       "description": "A short error buzz for validation failures, rejected actions, and error states.",
-      
       "files": [
         {
           "path": "registry/new-york/sounds/error-buzz/error-buzz.ts",
           "type": "registry:lib"
         }
       ],
-      "categories": ["feedback", "ui"],
+      "categories": [
+        "feedback",
+        "ui"
+      ],
       "author": "Kenney <https://kenney.nl>",
       "meta": {
         "duration": 0.104,
         "format": "mp3",
         "sizeKb": 1,
         "license": "CC0",
-        "tags": ["error", "buzz", "negative", "warning", "ui"]
-      }
+        "tags": [
+          "error",
+          "buzz",
+          "negative",
+          "warning",
+          "ui"
+        ]
+      },
+      "registryDependencies": [
+        "use-sound"
+      ]
     },
     {
       "name": "hover-tick",
       "type": "registry:block",
       "title": "Hover Tick",
       "description": "A subtle tick for hover and focus states. Adds tactile feedback to navigation.",
-      
       "files": [
         {
           "path": "registry/new-york/sounds/hover-tick/hover-tick.ts",
           "type": "registry:lib"
         }
       ],
-      "categories": ["hover", "ui"],
+      "categories": [
+        "hover",
+        "ui"
+      ],
       "author": "Kenney <https://kenney.nl>",
       "meta": {
         "duration": 0.224,
         "format": "mp3",
         "sizeKb": 2,
         "license": "CC0",
-        "tags": ["hover", "tick", "rollover", "focus", "ui"]
-      }
+        "tags": [
+          "hover",
+          "tick",
+          "rollover",
+          "focus",
+          "ui"
+        ]
+      },
+      "registryDependencies": [
+        "use-sound"
+      ]
     },
     {
       "name": "jump-8bit",
       "type": "registry:block",
       "title": "Jump 8-Bit",
       "description": "A classic 8-bit jump sound effect. Great for game UIs and playful interactions.",
-      
       "files": [
         {
           "path": "registry/new-york/sounds/jump-8bit/jump-8bit.ts",
           "type": "registry:lib"
         }
       ],
-      "categories": ["game-8bit"],
+      "categories": [
+        "game-8bit"
+      ],
       "author": "Kenney <https://kenney.nl>",
       "meta": {
         "duration": 0.467,
         "format": "mp3",
         "sizeKb": 4,
         "license": "CC0",
-        "tags": ["jump", "8-bit", "retro", "game", "digital"]
-      }
+        "tags": [
+          "jump",
+          "8-bit",
+          "retro",
+          "game",
+          "digital"
+        ]
+      },
+      "registryDependencies": [
+        "use-sound"
+      ]
     },
     {
       "name": "coin-collect",
       "type": "registry:block",
       "title": "Coin Collect",
       "description": "A cheerful coin pickup sound. Perfect for rewards, achievements, and gamification.",
-      
       "files": [
         {
           "path": "registry/new-york/sounds/coin-collect/coin-collect.ts",
           "type": "registry:lib"
         }
       ],
-      "categories": ["game-8bit"],
+      "categories": [
+        "game-8bit"
+      ],
       "author": "Kenney <https://kenney.nl>",
       "meta": {
         "duration": 0.441,
         "format": "mp3",
         "sizeKb": 4,
         "license": "CC0",
-        "tags": ["coin", "collect", "reward", "achievement", "game", "digital"]
-      }
+        "tags": [
+          "coin",
+          "collect",
+          "reward",
+          "achievement",
+          "game",
+          "digital"
+        ]
+      },
+      "registryDependencies": [
+        "use-sound"
+      ]
     }
   ]
 }

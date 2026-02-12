@@ -5,6 +5,9 @@
   "title": "Success Chime",
   "author": "Kenney <https://kenney.nl>",
   "description": "A positive confirmation chime for success states, form submissions, and completed actions.",
+  "registryDependencies": [
+    "use-sound"
+  ],
   "files": [
     {
       "path": "registry/new-york/sounds/success-chime/success-chime.ts",

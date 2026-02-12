@@ -5,6 +5,9 @@
   "title": "Notification Pop",
   "author": "Kenney <https://kenney.nl>",
   "description": "A friendly pop sound for notifications, toasts, and alerts.",
+  "registryDependencies": [
+    "use-sound"
+  ],
   "files": [
     {
       "path": "registry/new-york/sounds/notification-pop/notification-pop.ts",

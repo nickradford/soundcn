@@ -5,6 +5,9 @@
   "title": "Coin Collect",
   "author": "Kenney <https://kenney.nl>",
   "description": "A cheerful coin pickup sound. Perfect for rewards, achievements, and gamification.",
+  "registryDependencies": [
+    "use-sound"
+  ],
   "files": [
     {
       "path": "registry/new-york/sounds/coin-collect/coin-collect.ts",

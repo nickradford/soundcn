@@ -5,6 +5,9 @@
   "title": "Hover Tick",
   "author": "Kenney <https://kenney.nl>",
   "description": "A subtle tick for hover and focus states. Adds tactile feedback to navigation.",
+  "registryDependencies": [
+    "use-sound"
+  ],
   "files": [
     {
       "path": "registry/new-york/sounds/hover-tick/hover-tick.ts",

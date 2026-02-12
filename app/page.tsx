@@ -1,15 +1,29 @@
+import registry from "@/registry.json";
+import { SoundsPage } from "@/components/sounds-page";
+import { getBroadCategory, type SoundCatalogItem } from "@/lib/sound-catalog";
+
 export default function Home() {
-  return (
-    <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
-      <header className="flex flex-col gap-1">
-        <h1 className="text-3xl font-bold tracking-tight">soundcn</h1>
-        <p className="text-muted-foreground">
-          Sound effects for the modern web. Copy. Paste. Play.
-        </p>
-      </header>
-      <main className="flex flex-col flex-1 gap-8">
-        <p className="text-muted-foreground">Coming soon.</p>
-      </main>
-    </div>
-  )
+  const sounds: SoundCatalogItem[] = registry.items
+    .filter((item) => item.type === "registry:block")
+    .map((item) => {
+      const primaryCategory = item.categories?.[0] ?? "uncategorized";
+      return {
+        name: item.name,
+        title: item.title,
+        description: item.description,
+        author: item.author ?? "Unknown",
+        categories: item.categories ?? [],
+        primaryCategory,
+        broadCategory: getBroadCategory(primaryCategory),
+        meta: {
+          duration: item.meta?.duration ?? 0,
+          sizeKb: item.meta?.sizeKb ?? 0,
+          license: item.meta?.license ?? "Unknown",
+          tags: item.meta?.tags ?? [],
+        },
+      };
+    })
+    .sort((a, b) => a.title.localeCompare(b.title));
+
+  return <SoundsPage sounds={sounds} />;
 }

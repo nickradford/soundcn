@@ -5,6 +5,9 @@
   "title": "Error Buzz",
   "author": "Kenney <https://kenney.nl>",
   "description": "A short error buzz for validation failures, rejected actions, and error states.",
+  "registryDependencies": [
+    "use-sound"
+  ],
   "files": [
     {
       "path": "registry/new-york/sounds/error-buzz/error-buzz.ts",

@@ -5,6 +5,9 @@
   "title": "Click Soft",
   "author": "Kenney <https://kenney.nl>",
   "description": "A soft, subtle click. Ideal for minimal and clean UI interactions.",
+  "registryDependencies": [
+    "use-sound"
+  ],
   "files": [
     {
       "path": "registry/new-york/sounds/click-soft/click-soft.ts",

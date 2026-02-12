@@ -5,6 +5,9 @@
   "title": "Switch On",
   "author": "Kenney <https://kenney.nl>",
   "description": "A satisfying switch-on toggle sound for checkboxes, toggles, and state changes.",
+  "registryDependencies": [
+    "use-sound"
+  ],
   "files": [
     {
       "path": "registry/new-york/sounds/switch-on/switch-on.ts",

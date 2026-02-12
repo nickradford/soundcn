@@ -5,6 +5,9 @@
   "title": "Click 8-Bit",
   "author": "Kenney <https://kenney.nl>",
   "description": "A retro 8-bit click sound. Perfect for buttons and toggles in pixel-art or retro-themed interfaces.",
+  "registryDependencies": [
+    "use-sound"
+  ],
   "files": [
     {
       "path": "registry/new-york/sounds/click-8bit/click-8bit.ts",

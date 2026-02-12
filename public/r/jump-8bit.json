@@ -5,6 +5,9 @@
   "title": "Jump 8-Bit",
   "author": "Kenney <https://kenney.nl>",
   "description": "A classic 8-bit jump sound effect. Great for game UIs and playful interactions.",
+  "registryDependencies": [
+    "use-sound"
+  ],
   "files": [
     {
       "path": "registry/new-york/sounds/jump-8bit/jump-8bit.ts",

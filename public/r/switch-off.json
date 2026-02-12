@@ -5,6 +5,9 @@
   "title": "Switch Off",
   "author": "Kenney <https://kenney.nl>",
   "description": "A toggle switch-off sound. Pair with switch-on for complete toggle feedback.",
+  "registryDependencies": [
+    "use-sound"
+  ],
   "files": [
     {
       "path": "registry/new-york/sounds/switch-off/switch-off.ts",
