@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo, useState } from "react";
 import { useQueryState, parseAsString } from "nuqs";
-import { Github, Volume2 } from "lucide-react";
+import { Github } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ALL_CATEGORY, type SoundCatalogItem } from "@/lib/sound-catalog";
 import { filterSounds, buildCategoryOptions } from "@/lib/sound-filters";
@@ -14,6 +14,28 @@ import { useHoverPreview } from "@/hooks/use-hover-preview";
 
 interface SoundsPageProps {
   sounds: SoundCatalogItem[];
+}
+
+// Deterministic bar configs for the hero equalizer
+const HERO_BARS = Array.from({ length: 80 }, (_, i) => ({
+  duration: 0.6 + (((i * 7) % 11) / 11) * 0.9,
+  delay: ((i * 3) % 17) / 17 * 1.5,
+  height: 20 + (((i * 5) % 7) / 7) * 80,
+}));
+
+function EqLogo() {
+  const heights = [55, 90, 35, 75, 45];
+  return (
+    <div className="flex items-end gap-[2.5px] h-[18px]" aria-hidden="true">
+      {heights.map((h, i) => (
+        <span
+          key={i}
+          className="w-[3px] rounded-full bg-primary"
+          style={{ height: `${h}%` }}
+        />
+      ))}
+    </div>
+  );
 }
 
 export function SoundsPage({ sounds }: SoundsPageProps) {
@@ -41,10 +63,13 @@ export function SoundsPage({ sounds }: SoundsPageProps) {
 
   const { onPreviewStart, onPreviewStop } = useHoverPreview();
 
-  const handleSelect = useCallback((sound: SoundCatalogItem) => {
-    onPreviewStop();
-    setSelectedSound(sound);
-  }, [onPreviewStop]);
+  const handleSelect = useCallback(
+    (sound: SoundCatalogItem) => {
+      onPreviewStop();
+      setSelectedSound(sound);
+    },
+    [onPreviewStop]
+  );
 
   const handleClose = useCallback(() => {
     setSelectedSound(null);
@@ -52,13 +77,22 @@ export function SoundsPage({ sounds }: SoundsPageProps) {
 
   return (
     <div className="flex min-h-svh flex-col">
-      {/* Header */}
-      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4">
-        <div className="flex items-center gap-2">
-          <Volume2 className="size-5" />
-          <span className="text-lg font-bold tracking-tight">soundcn</span>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:text-sm focus:font-medium"
+      >
+        Skip to content
+      </a>
+
+      {/* ── Header ── */}
+      <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
+        <div className="flex items-center gap-2.5">
+          <EqLogo />
+          <span className="font-display text-lg font-bold tracking-tight" aria-label="soundcn">
+            soundcn
+          </span>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <a
             href="https://github.com/soundcn/soundcn"
             target="_blank"
@@ -66,28 +100,56 @@ export function SoundsPage({ sounds }: SoundsPageProps) {
             className="text-muted-foreground hover:text-foreground transition-colors"
             aria-label="GitHub"
           >
-            <Github className="size-5" />
+            <Github className="size-5" aria-hidden="true" />
           </a>
           <ThemeToggle />
         </div>
       </header>
 
-      {/* Hero */}
-      {/* <section className="flex flex-col items-center gap-4 px-4 pt-12 pb-16">
-        <h1 className="text-center text-4xl font-bold tracking-tight sm:text-5xl">
-          Beautiful UI sounds
-          <br />
-          <span className="text-muted-foreground">for your next project</span>
-        </h1>
-        <p className="text-muted-foreground max-w-md text-center text-base">
-          A collection of carefully crafted sounds for user interfaces. Inspired
-          by shadcn/ui design philosophy.
-        </p>
-      </section> */}
+      {/* ── Hero ── */}
+      <section className="relative overflow-hidden px-6 pt-8 pb-14 sm:pt-14 sm:pb-20">
+        {/* Background equalizer bars */}
+        <div className="pointer-events-none absolute inset-0 flex items-end gap-[2px] overflow-hidden opacity-[0.045] dark:opacity-[0.08]" aria-hidden="true">
+          {HERO_BARS.map((bar, i) => (
+            <span
+              key={i}
+              className="hero-eq-bar min-w-0 flex-1 rounded-t-sm bg-primary"
+              style={{
+                height: `${bar.height}%`,
+                transformOrigin: "bottom",
+                animation: `eq ${bar.duration}s ease-in-out ${bar.delay}s infinite`,
+              }}
+            />
+          ))}
+        </div>
 
-      {/* Sticky action bar */}
-      <div className="bg-background/80 sticky top-0 z-40 border-b backdrop-blur-md">
-        <div className="mx-auto flex w-full max-w-7xl items-center gap-4 px-4 py-3">
+        <div className="relative mx-auto max-w-6xl">
+          <h1 className="font-display text-4xl font-bold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <span className="text-primary">{sounds.length}</span> curated UI
+            sounds.
+            <br />
+            <span className="text-muted-foreground">Copy. Paste. Play.</span>
+          </h1>
+
+          <p className="text-muted-foreground mt-5 max-w-lg text-base leading-relaxed sm:text-lg">
+            Open-source sound effects for modern web apps. Install any sound
+            with a single CLI command.
+          </p>
+
+          <div className="mt-7">
+            <div className="bg-secondary/70 border-border/60 inline-flex items-center gap-3 rounded-lg border px-4 py-2.5 font-mono text-sm backdrop-blur-sm">
+              <span className="text-primary select-none">$</span>
+              <code className="text-foreground/80">
+                npx shadcn add https://soundcn.dev/r/click-soft.json
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Sticky search & filter bar ── */}
+      <div className="bg-background/80 sticky top-0 z-40 border-b backdrop-blur-xl">
+        <div className="mx-auto flex w-full max-w-6xl items-center gap-4 px-6 py-3">
           <SoundSearch value={query} onChange={setQuery} />
           <div className="min-w-0 flex-1">
             <CategoryFilter
@@ -99,9 +161,9 @@ export function SoundsPage({ sounds }: SoundsPageProps) {
         </div>
       </div>
 
-      {/* Content */}
-      <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-6 px-4 py-6">
-        <p className="text-muted-foreground text-sm">
+      {/* ── Content ── */}
+      <main id="main-content" className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 px-6 py-8">
+        <p className="text-muted-foreground text-sm tabular-nums">
           {filteredSounds.length} sound
           {filteredSounds.length !== 1 ? "s" : ""}
         </p>
@@ -114,7 +176,7 @@ export function SoundsPage({ sounds }: SoundsPageProps) {
         />
       </main>
 
-      {/* Drawer */}
+      {/* ── Drawer ── */}
       <SoundDetail sound={selectedSound} onClose={handleClose} />
     </div>
   );

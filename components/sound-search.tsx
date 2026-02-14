@@ -23,16 +23,22 @@ export function SoundSearch({ value, onChange }: SoundSearchProps) {
   }, []);
 
   return (
-    <div className="relative w-full max-w-[260px]">
-      <Search className="text-muted-foreground absolute left-3 top-1/2 size-4 -translate-y-1/2" />
+    <div className="relative w-full max-w-sm">
+      <Search className="text-muted-foreground/60 absolute left-3 top-1/2 size-4 -translate-y-1/2" aria-hidden="true" />
       <input
         ref={inputRef}
         type="text"
-        placeholder="Search sounds..."
+        name="search"
+        aria-label="Search sounds"
+        autoComplete="off"
+        placeholder="Search sounds\u2026"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="border-input bg-background placeholder:text-muted-foreground focus-visible:ring-ring/50 focus-visible:border-ring h-9 w-full rounded-lg border pl-9 pr-3 text-sm outline-none transition-shadow focus-visible:ring-[3px]"
+        className="border-border/60 bg-secondary/40 placeholder:text-muted-foreground/50 focus-visible:ring-primary/20 focus-visible:border-primary/40 h-10 w-full rounded-lg border pl-9 pr-14 text-sm outline-none transition-[color,border-color,box-shadow,background-color] focus-visible:ring-[3px]"
       />
+      <kbd className="text-muted-foreground/40 pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 font-mono text-[11px] tracking-wide">
+        &#8984;K
+      </kbd>
     </div>
   );
 }

@@ -29,17 +29,19 @@ export function CategoryFilter({
               key={option.key}
               onClick={() => onChange(option.key)}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium transition-colors",
+                "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium transition-[color,border-color,box-shadow,background-color] duration-150 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none",
                 isActive
-                  ? "bg-foreground text-background border-transparent"
-                  : "border-input bg-background text-foreground hover:bg-accent"
+                  ? "bg-primary text-primary-foreground border-primary shadow-sm shadow-primary/15"
+                  : "border-border/50 bg-card text-foreground hover:border-primary/25 hover:bg-accent"
               )}
             >
               {option.label}
               <span
                 className={cn(
-                  "text-xs",
-                  isActive ? "text-background/70" : "text-muted-foreground"
+                  "text-xs tabular-nums",
+                  isActive
+                    ? "text-primary-foreground/65"
+                    : "text-muted-foreground"
                 )}
               >
                 {option.count}

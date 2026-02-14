@@ -40,7 +40,7 @@ function CopyRow({ label, text }: { label: string; text: string }) {
         {label}
       </span>
       <div className="group/row relative">
-        <pre className="bg-secondary/50 overflow-x-auto rounded-lg p-3 pr-10 text-sm leading-relaxed [scrollbar-width:none]">
+        <pre className="bg-secondary/50 border-border/30 overflow-x-auto rounded-lg border p-3 pr-10 text-sm leading-relaxed [scrollbar-width:none]">
           <code className="font-mono">{text}</code>
         </pre>
         <button
@@ -52,11 +52,14 @@ function CopyRow({ label, text }: { label: string; text: string }) {
           aria-label={`Copy ${label}`}
         >
           {copied ? (
-            <Check className="size-3.5 text-green-500" />
+            <Check className="size-3.5 text-green-500" aria-hidden="true" />
           ) : (
-            <Copy className="text-muted-foreground size-3.5" />
+            <Copy className="text-muted-foreground size-3.5" aria-hidden="true" />
           )}
         </button>
+        <span className="sr-only" aria-live="polite">
+          {copied ? `${label} copied to clipboard` : ""}
+        </span>
       </div>
     </div>
   );
@@ -82,7 +85,6 @@ import { ${exportName} } from "@/sounds/${sound.name}";
 const [play] = useSound(${exportName});`
     : "";
 
-  // Stop playback when sound changes or drawer closes
   useEffect(() => {
     return () => {
       playbackRef.current?.stop();
@@ -90,7 +92,6 @@ const [play] = useSound(${exportName});`
     };
   }, [sound?.name]);
 
-  // Reset play state when sound changes
   useEffect(() => {
     setPlayState("idle");
   }, [sound?.name]);
@@ -155,17 +156,17 @@ const [play] = useSound(${exportName});`
                 <button
                   onClick={handleTogglePlayback}
                   className={cn(
-                    "relative flex size-14 shrink-0 items-center justify-center rounded-full transition-colors",
+                    "relative flex size-14 shrink-0 items-center justify-center rounded-full transition-[color,background-color,box-shadow] duration-200 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none",
                     playState === "playing"
-                      ? "bg-foreground text-background"
-                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                      ? "bg-primary text-primary-foreground shadow-md shadow-primary/25"
+                      : "bg-secondary text-secondary-foreground hover:bg-primary/10 hover:text-primary"
                   )}
                   aria-label={
                     playState === "playing" ? "Stop sound" : "Play sound"
                   }
                 >
                   {playState === "playing" && (
-                    <span className="bg-foreground/30 absolute inset-0 animate-ping rounded-full" />
+                    <span className="bg-primary/25 absolute inset-0 animate-ping motion-reduce:animate-none rounded-full" />
                   )}
                   {playState === "loading" ? (
                     <Loader2 className="size-6 animate-spin" />
@@ -181,6 +182,7 @@ const [play] = useSound(${exportName});`
                     {sound.title}
                   </DrawerTitle>
                   <DrawerDescription>
+                    {sound.broadCategory} ·{" "}
                     {formatDuration(sound.meta.duration)} ·{" "}
                     {formatSizeKb(sound.meta.sizeKb)} · {sound.meta.license}
                   </DrawerDescription>
@@ -188,7 +190,7 @@ const [play] = useSound(${exportName});`
 
                 <button
                   onClick={handleDownload}
-                  className="text-muted-foreground hover:text-foreground hover:bg-secondary flex size-9 shrink-0 items-center justify-center rounded-lg transition-colors"
+                  className="text-muted-foreground hover:text-primary hover:bg-primary/10 flex size-9 shrink-0 items-center justify-center rounded-lg transition-colors"
                   aria-label="Download sound file"
                 >
                   <Download className="size-5" />
@@ -197,7 +199,7 @@ const [play] = useSound(${exportName});`
             </DrawerHeader>
 
             {sound.description && (
-              <p className="text-muted-foreground text-sm mb-6">
+              <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
                 {sound.description}
               </p>
             )}

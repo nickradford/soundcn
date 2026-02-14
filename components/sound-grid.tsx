@@ -16,14 +16,14 @@ export function SoundGrid({
 }: SoundGridProps) {
   if (sounds.length === 0) {
     return (
-      <div className="border-muted text-muted-foreground rounded-xl border border-dashed px-6 py-16 text-center">
-        No sounds match your filters.
+      <div className="border-border/40 text-muted-foreground rounded-xl border border-dashed px-6 py-20 text-center">
+        <p className="text-sm">No sounds match your filters.</p>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       {sounds.map((sound) => (
         <SoundCard
           key={sound.name}
