@@ -1,7 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import {
+  ArrowUpRight,
   Check,
   Clock,
   Copy,
@@ -303,13 +305,22 @@ export function SoundDetail({ sound, onClose, pm, onPmChange }: SoundDetailProps
                   ) : null}
                 </div>
 
-                <button
-                  onClick={download}
-                  className="text-muted-foreground hover:text-primary hover:bg-primary/10 flex size-9 shrink-0 items-center justify-center rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none mt-1"
-                  aria-label="Download sound file"
-                >
-                  <Download className="size-[18px]" />
-                </button>
+                <div className="flex shrink-0 items-center gap-1 mt-1">
+                  <Link
+                    href={`/sound/${sound.name}`}
+                    className="text-muted-foreground hover:text-primary hover:bg-primary/10 flex size-9 items-center justify-center rounded-lg transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
+                    aria-label="Open sound page"
+                  >
+                    <ArrowUpRight className="size-[18px]" aria-hidden="true" />
+                  </Link>
+                  <button
+                    onClick={download}
+                    className="text-muted-foreground hover:text-primary hover:bg-primary/10 flex size-9 items-center justify-center rounded-lg transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
+                    aria-label="Download sound file"
+                  >
+                    <Download className="size-[18px]" aria-hidden="true" />
+                  </button>
+                </div>
               </div>
             </DrawerHeader>
 
