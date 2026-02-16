@@ -21,6 +21,7 @@ import { SoundGrid } from "@/components/sound-grid";
 import { SoundSearch } from "@/components/sound-search";
 import { BatchInstallBar } from "@/components/batch-install-bar";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const SoundDetail = dynamic(() =>
@@ -254,12 +255,12 @@ export function SoundsPage({ sounds }: SoundsPageProps) {
 
       {/* ── Header ── */}
       <header className="stagger-fade-up mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
-        <div className="flex items-center gap-2.5">
+        <Link href="/" className="flex items-center gap-2.5">
           <EqLogo />
           <span className="font-display text-lg font-bold" aria-label="soundcn">
             soundcn
           </span>
-        </div>
+        </Link>
         <div className="flex items-center gap-4">
           <a
             href="https://github.com/kapishdima/soundcn"
