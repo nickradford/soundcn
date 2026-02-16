@@ -22,7 +22,7 @@ Includes a `useSound` hook for playback via the Web Audio API. Zero dependencies
 
 ## How it works
 
-- Browse sounds at [soundcn.dev](https://soundcn.dev)
+- Browse sounds at [soundcn.xyz](https://soundcn.xyz/)
 - Install any sound — it copies the `.ts` file and the `useSound` hook into your project
 - Import and play:
 
